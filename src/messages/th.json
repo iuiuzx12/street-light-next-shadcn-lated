@@ -1,0 +1,16 @@
+{
+  "LoginPage": {
+    "upForm": "ลงชื่อเข้าใช้ระบบ",
+    "title": "เข้าสู่ระบบ",
+    "usernameLabel": "ชื่อผู้ใช้",
+    "passwordLabel": "รหัสผ่าน",
+    "loginButton": "เข้าสู่ระบบ",
+    "inputPlaceholderUsername":"ใส่ชื่อผู้ใช้",
+    "inputPlaceholderPassword": "ใส่รหัสผ่าน"
+  },
+  "LanguageSwitcher": {
+    "label": "เปลี่ยนภาษา",
+    "en": "อังกฤษ",
+    "th": "ไทย"
+  }
+}

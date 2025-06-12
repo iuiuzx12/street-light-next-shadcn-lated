@@ -1,0 +1,16 @@
+{
+  "LoginPage": {
+    "upForm": "Sign in to your account",
+    "title": "Sign In",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "loginButton": "Login",
+    "inputPlaceholderUsername":"Enter your username",
+    "inputPlaceholderPassword": "Enter your password"
+  },
+  "LanguageSwitcher": {
+    "label": "Change language",
+    "en": "English",
+    "th": "Thai"
+  }
+}
