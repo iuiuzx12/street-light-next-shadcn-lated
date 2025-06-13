@@ -6,7 +6,10 @@
     "passwordLabel": "รหัสผ่าน",
     "loginButton": "เข้าสู่ระบบ",
     "inputPlaceholderUsername":"ใส่ชื่อผู้ใช้",
-    "inputPlaceholderPassword": "ใส่รหัสผ่าน"
+    "inputPlaceholderPassword": "ใส่รหัสผ่าน",
+    "loginSuccess": "เข้าสู่ระบบสำเร็จ",
+    "loginFailed": "เข้าสู่ระบบล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "LoginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ"
   },
   "LanguageSwitcher": {
     "label": "เปลี่ยนภาษา",

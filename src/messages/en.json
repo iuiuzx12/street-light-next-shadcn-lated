@@ -6,7 +6,10 @@
     "passwordLabel": "Password",
     "loginButton": "Login",
     "inputPlaceholderUsername":"Enter your username",
-    "inputPlaceholderPassword": "Enter your password"
+    "inputPlaceholderPassword": "Enter your password",
+    "loginSuccess": "Login successful",
+    "loginFailed": "Login failed, please try again",
+    "LoginError": "Login Error"
   },
   "LanguageSwitcher": {
     "label": "Change language",
