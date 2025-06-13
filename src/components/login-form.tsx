@@ -31,6 +31,7 @@ export function LoginForm() {
   const haddleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+
     try {
       setLoading(true);
       const res = await fetch('api/login/user-login', {
@@ -48,7 +49,7 @@ export function LoginForm() {
 
       if(res.status === 200) {
         setError(t('loginSuccess'));
-        rounter.push(`/${locale}/dashboard`);
+        rounter.push(`/dashboard`);
         rounter.refresh();
       } else{
         setLoading(false);

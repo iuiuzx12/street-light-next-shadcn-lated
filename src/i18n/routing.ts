@@ -1,22 +1,20 @@
-// src/i18n/routing.ts
-import { defineRouting } from 'next-intl/routing';
-
+import {defineRouting} from 'next-intl/routing';
+ 
 export const routing = defineRouting({
-  // รายการภาษาที่รองรับ
-  locales: ['th', 'en'],
-
-  // ภาษาเริ่มต้น
+  locales: ['en', 'th'],
   defaultLocale: 'th',
-
-  // กำหนด Path ของแต่ละหน้า
+  localePrefix: {
+    mode: 'always',
+    prefixes: {
+      'en': '/en',
+      'th': '/th'
+    }
+  },
   pathnames: {
-    // บอกว่า path "/" คือหน้าหลัก (ซึ่งเราจะใช้เป็นหน้า Login)
     '/': '/',
-
-    // กำหนด path สำหรับหน้า Dashboard
-    '/dashboard': {
-      th: '/dashboard',
-      en: '/dashboard'
+    '/organization': {
+      'en': '/organization',
+      'th': '/organisation'
     }
   }
 });
