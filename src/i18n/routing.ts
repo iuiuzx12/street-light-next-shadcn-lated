@@ -12,6 +12,7 @@ export const routing = defineRouting({
   },
   pathnames: {
     '/': '/',
+    '/not-auth': '/not-auth',
     '/organization': {
       'en': '/organization',
       'th': '/organisation'

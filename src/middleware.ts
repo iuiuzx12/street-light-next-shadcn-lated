@@ -25,7 +25,7 @@ const authMiddleware = withAuth(
   }
 );
 
-let publicPages = ["/", "/login", "/logout", "/not-auth"];
+let publicPages = ["/", "/logout", "/not-auth"];
 
 export default async function middleware(
   req: NextRequest,
@@ -45,7 +45,7 @@ export default async function middleware(
     );
 
     if (responseUser.status === 200) {
-      publicPages = ["/", "/login", "/logout", "/not-auth"];
+      publicPages = ["/", "/logout", "/not-auth"];
       const DataUser: ListAuth = await responseUser.json().finally();
 
       if (DataUser.dashboard[0] === 1) publicPages.push("/dashboard");

@@ -15,5 +15,10 @@
     "label": "Change language",
     "en": "English",
     "th": "Thai"
+  },
+  "NotAuth": {
+    "not-auth-title": "Not Authorized",
+    "not-auth-description": "You are not authorized to access this page.",
+    "not-auth-close": "Close"
   }
 }
