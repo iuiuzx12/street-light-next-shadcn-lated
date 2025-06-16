@@ -3,10 +3,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useLocale} from 'next-intl'
 import { useTranslations } from 'next-intl';
 import { Button } from "@/components/ui/button"
 import Image from "next/image";
+import logo_lne from "../../public/logo/logo_lne.jpeg"; // Corrected to the accurate path
 import {
   Card,
   CardContent,
@@ -16,21 +16,23 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LanguageSwitcher } from "./language-switcher";
-import { LogIn } from 'lucide-react';
+import { LogIn, Eye, EyeOff } from 'lucide-react';
 
 export function LoginForm() {
   const rounter = useRouter();
-  const locale = useLocale();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isloading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const t = useTranslations('LoginPage');
  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const haddleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
 
     try {
       setLoading(true);
@@ -69,7 +71,7 @@ export function LoginForm() {
         <div className="text-center space-y-2">
           <div className="w-20 h-20 mx-auto  flex items-center justify-center ">
             <Image 
-              src="/logo/images.jpeg" 
+              src={logo_lne} 
               alt="Company Logo"
               width={100}
               height={100}
@@ -101,19 +103,29 @@ export function LoginForm() {
               <Label htmlFor="password" className="text-sm font-medium text-gray-700">
                 {t('passwordLabel')}
               </Label>
-              
             </div>
             <div className="relative">
               <Input 
                 id="password" 
                 name="password" 
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 onChange={(e) => setPassword(e.target.value)}
                 required 
                 className="h-11 border-gray-200 focus:border-sky-500 focus:ring-sky-500/20 focus:ring-2 transition-all duration-200 pr-12"
                 placeholder={t('inputPlaceholderPassword')}
               />
-              
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute inset-y-0 right-0 flex items-center justify-center w-12 h-11 text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition-colors duration-200"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="w-4 h-4" />
+                ) : (
+                  <Eye className="w-4 h-4" />
+                )}
+              </button>
             </div>
             {error && <p className="text-red-500 text-xs italic mb-4">{error}</p>}
           </div>
