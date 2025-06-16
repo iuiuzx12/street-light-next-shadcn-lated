@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import {routing} from '@/i18n/routing';
 import "../globals.css" // ตรวจสอบ path ของ globals.css ให้ถูกต้อง
+import { notFound } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 

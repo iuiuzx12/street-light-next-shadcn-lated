@@ -1,5 +1,8 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+
 import {
   IconCreditCard,
   IconDotsVertical,
@@ -29,6 +32,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
+
+
 export function NavUser({
   user,
 }: {
@@ -38,7 +43,42 @@ export function NavUser({
     avatar: string
   }
 }) {
+
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { isMobile } = useSidebar()
+
+  const handleLogout = async (e?: React.MouseEvent<HTMLDivElement>) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    try{
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        body: JSON.stringify({}),
+      });
+
+      if (!response.ok) {
+       throw new Error("Network response was not ok"); 
+      }
+      const res = await response.json();
+      setIsLoading(false);
+      setError("สำเร็จ");
+      router.push("/");
+      router.refresh();
+    
+    console.log("Logging out...");
+  }catch (error) {
+    setIsLoading(false);
+    console.error("Logout failed:", error);
+    return false;
+  }
+  
+};
+
+  // Removed useEffect that called handleLogout on mount to fix missing dependency warning
 
   return (
     <SidebarMenu>
@@ -98,7 +138,10 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={handleLogout}
+            >
               <IconLogout />
               Log out
             </DropdownMenuItem>

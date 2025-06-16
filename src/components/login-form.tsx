@@ -36,18 +36,18 @@ export function LoginForm() {
 
     try {
       setLoading(true);
-      const res = await fetch('api/login/user-login', {
-        method: 'POST',
+      const res = await fetch("/api/login/user-login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'API-KEY': "1234"
+          "Content-Type": "application/json",
+          "API-Key": "1234",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           username: username,
           password: password,
-          projectname : process.env.NEXT_PUBLIC_PROJECT_ID 
+          projectName: process.env.NEXT_PUBLIC_PROJECT_ID,
         }),
-      })
+      });
 
       if(res.status === 200) {
         setError(t('loginSuccess'));

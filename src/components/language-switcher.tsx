@@ -16,12 +16,12 @@ const languages = [
   {
     code: 'th',
     name: 'ไทย',
-    flag: '🇹🇭'
+    shortName: 'TH'
   },
   {
     code: 'en',
     name: 'English',
-    flag: '🇺🇸'
+    shortName: 'EN'
   }
 ];
 
@@ -46,16 +46,16 @@ export function LanguageSwitcher() {
         <Button 
           variant="ghost" 
           size="sm"
-          className="h-10 w-10 p-0 hover:bg-sky-50 hover:scale-105 transition-all duration-200 border border-sky-200 rounded-full shadow-sm"
+          className="h-10 w-16 px-2 hover:bg-sky-50 hover:scale-105 transition-all duration-200 border border-sky-200 rounded-lg shadow-sm font-medium text-sm"
         >
-          <span className="text-2xl" role="img" aria-label={currentLanguage.name}>
-            {currentLanguage.flag}
+          <span className="text-sky-600">
+            {currentLanguage.shortName}
           </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end" 
-        className="w-40 shadow-lg border-sky-100"
+        className="w-32 shadow-lg border-sky-100"
       >
         {languages.map((language) => (
           <DropdownMenuItem
@@ -67,8 +67,8 @@ export function LanguageSwitcher() {
                 : 'hover:bg-sky-50 hover:text-sky-700'
             }`}
           >
-            <span className="mr-3 text-lg" role="img" aria-label={language.name}>
-              {language.flag}
+            <span className="mr-3 text-sm font-medium text-sky-600">
+              {language.shortName}
             </span>
             <span className="text-sm">{language.name}</span>
             {locale === language.code && (
