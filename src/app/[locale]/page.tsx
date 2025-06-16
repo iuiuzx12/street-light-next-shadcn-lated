@@ -5,21 +5,20 @@ export default function Page() {
     <div className="relative flex min-h-screen w-full items-center justify-center p-4 md:p-10">
       {/* Background with electric theme */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-        {/* Circuit board pattern */}
+        {/* Circuit board pattern - Commented out for performance testing
         <div className="absolute inset-0 opacity-20">
           <svg className="h-full w-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
-            {/* Circuit lines */}
             <path d="M100,100 L300,100 L300,200 L500,200" stroke="rgb(59,130,246)" strokeWidth="2" fill="none" opacity="0.6"/>
             <path d="M600,150 L800,150 L800,300 L1000,300" stroke="rgb(34,197,94)" strokeWidth="2" fill="none" opacity="0.5"/>
             <path d="M200,400 L400,400 L400,500 L600,500 L600,600" stroke="rgb(168,85,247)" strokeWidth="2" fill="none" opacity="0.4"/>
             <path d="M700,50 L900,50 L900,250 L1100,250" stroke="rgb(59,130,246)" strokeWidth="2" fill="none" opacity="0.3"/>
-            {/* Circuit nodes */}
             <circle cx="300" cy="100" r="4" fill="rgb(59,130,246)" opacity="0.8"/>
             <circle cx="500" cy="200" r="4" fill="rgb(34,197,94)" opacity="0.8"/>
             <circle cx="800" cy="150" r="4" fill="rgb(168,85,247)" opacity="0.8"/>
             <circle cx="600" cy="500" r="4" fill="rgb(59,130,246)" opacity="0.8"/>
           </svg>
         </div>
+        */}
         
         {/* Glowing light bulbs */}
         <div className="absolute top-20 left-20">
@@ -30,6 +29,7 @@ export default function Page() {
           </div>
         </div>
         
+        {/* Light bulb 2 - Commented out for performance testing
         <div className="absolute top-40 right-32">
           <div className="relative">
             <div className="w-6 h-10 bg-blue-400 rounded-full opacity-70 animate-pulse shadow-lg shadow-blue-400/50" style={{animationDelay: '0.5s'}}></div>
@@ -37,6 +37,7 @@ export default function Page() {
             <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-gray-700 rounded"></div>
           </div>
         </div>
+        */}
         
         <div className="absolute bottom-32 left-16">
           <div className="relative">
@@ -46,6 +47,7 @@ export default function Page() {
           </div>
         </div>
         
+        {/* Light bulb 4 - Commented out for performance testing
         <div className="absolute bottom-20 right-20">
           <div className="relative">
             <div className="w-7 h-11 bg-purple-400 rounded-full opacity-85 animate-pulse shadow-lg shadow-purple-400/50" style={{animationDelay: '1.5s'}}></div>
@@ -53,8 +55,9 @@ export default function Page() {
             <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-gray-700 rounded"></div>
           </div>
         </div>
+        */}
         
-        {/* Electric sparks */}
+        {/* Electric sparks - Commented out for performance testing
         <div className="absolute top-1/4 left-1/3">
           <div className="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
         </div>
@@ -64,6 +67,7 @@ export default function Page() {
         <div className="absolute top-1/2 right-1/3">
           <div className="w-3 h-3 bg-green-300 rounded-full animate-ping" style={{animationDelay: '0.8s'}}></div>
         </div>
+        */}
         
         {/* Subtle electric grid pattern */}
         <div className="absolute inset-0 opacity-5" style={{
@@ -77,7 +81,8 @@ export default function Page() {
         <LoginForm />
       </div>
       
-      {/* Bottom decoration with electric wave */}
+      {/* Bottom decoration with electric wave - Commented out for performance testing */}
+      {/*
       <div className="absolute bottom-0 left-0 right-0 h-40">
         <svg className="w-full h-full" viewBox="0 0 1200 200" preserveAspectRatio="none">
           <defs>
@@ -90,6 +95,7 @@ export default function Page() {
           <path d="M0,100 C300,50 600,150 900,80 C1050,40 1200,100 1200,100 L1200,200 L0,200 Z" fill="url(#electricGrad)"/>
         </svg>
       </div>
+      */}
     </div>
   )
 }

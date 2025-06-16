@@ -1,7 +1,9 @@
+import { getToken } from "next-auth/jwt";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
 import { NextFetchEvent, NextRequest } from "next/server";
-import { ListAuth } from "./interface/auth";
+// ListAuth might not be needed here anymore if the API call is removed
+// import { ListAuth } from "./interface/auth";
 
 const locales = ["en", "th"];
 
@@ -21,54 +23,45 @@ const authMiddleware = withAuth(
     pages: {
       signIn: "/not-auth",
     },
-    secret: "your-256-bit-secret",
+  secret: "your-256-bit-secret", // Ensure this matches the secret in next-auth options
   }
 );
-
-let publicPages = ["/", "/login","/logout", "/not-auth"];
 
 export default async function middleware(
   req: NextRequest,
   event: NextFetchEvent
 ) {
-  try {
-    const cookies = req.cookies;
-    const authToken = cookies.get("token");
-    const responseUser = await fetch(
-      process.env.API_URL + "/StreetLight/getDataUser",
-      {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + authToken?.value,
-        },
-      }
-    );
+  const token = await getToken({ req, secret: "your-256-bit-secret" });
 
-    if (responseUser.status === 200) {
-      publicPages = ["/", "login","/logout", "/not-auth"];
-      const DataUser: ListAuth = await responseUser.json().finally();
+  let publicPages = ["/", "/login", "/logout", "/not-auth"];
 
-      if (DataUser.dashboard[0] === 1) publicPages.push("/dashboard");
-      
-    }
-
-    const publicPathnameRegex = RegExp(
-      `^(/(${locales.join("|")}))?(${publicPages
-        .flatMap((p) => (p === "/" ? ["", "/"] : p))
-        .join("|")})/?$`,
-      "i"
-    );
-
-    const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-
-    if (isPublicPage) {
-      return intlMiddleware(req);
-    } else {
-      return (authMiddleware as any)(req);
-    }
-  } catch (error) {
-    return intlMiddleware(req);
+  // Check if token exists and has the dashboardPermission property
+  // The value 1 indicates permission, adjust if your API returns boolean or other values
+  if (token && (token as any).dashboardPermission === 1) {
+    publicPages.push("/dashboard");
   }
+  // Add other pages that depend on token flags similarly
+
+  const publicPathnameRegex = RegExp(
+    `^(/(${locales.join("|")}))?(${publicPages
+      .flatMap((p) => (p === "/" ? ["", "/"] : p)) // Handle root path correctly
+      .join("|")})/?$`,
+    "i"
+  );
+
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+
+  if (isPublicPage) {
+    return intlMiddleware(req); // Serve public page with internationalization
+  } else {
+    // For non-public pages, enforce authentication using authMiddleware
+    // authMiddleware will redirect to signIn page if not authenticated
+    return (authMiddleware as any)(req, event);
+  }
+  // The try-catch block for the API call is removed.
+  // General error handling for middleware execution can be added if needed,
+  // but often, letting errors propagate to Next.js default error handling is fine
+  // or specific errors handled by intlMiddleware or authMiddleware.
 }
 
 export const config = {
