@@ -20,5 +20,21 @@
     "not-auth-title": "ไม่ได้รับอนุญาต",
     "not-auth-description": "คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้",
     "not-auth-close": "ปิด"
+  },
+  "ControlGroup": {
+    "pageTitle": "จัดการกลุ่มควบคุม",
+    "addGroup": "เพิ่มกลุ่ม",
+    "deleteGroup": "ลบกลุ่ม",
+    "confirmDelete": "คุณแน่ใจหรือไม่ที่จะลบกลุ่มนี้?",
+    "groupName": "ชื่อกลุ่ม",
+    "actions": "การดำเนินการ",
+    "addNewGroup": "เพิ่มกลุ่มใหม่",
+    "enterGroupName": "กรุณาใส่ชื่อกลุ่ม",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "addSuccess": "เพิ่มกลุ่มสำเร็จ",
+    "addError": "เกิดข้อผิดพลาดในการเพิ่มกลุ่ม",
+    "deleteSuccess": "ลบกลุ่มสำเร็จ",
+    "deleteError": "เกิดข้อผิดพลาดในการลบกลุ่ม"
   }
 }

@@ -11,6 +11,7 @@
     "loginFailed": "Login failed, please try again",
     "LoginError": "Login Error"
   },
+  
   "LanguageSwitcher": {
     "label": "Change language",
     "en": "English",
@@ -20,5 +21,21 @@
     "not-auth-title": "Not Authorized",
     "not-auth-description": "You are not authorized to access this page.",
     "not-auth-close": "Close"
+  },
+  "ControlGroup": {
+    "pageTitle": "Control Group Management",
+    "addGroup": "Add Group",
+    "deleteGroup": "Delete Group",
+    "confirmDelete": "Are you sure you want to delete this group?",
+    "groupName": "Group Name",
+    "actions": "Actions",
+    "addNewGroup": "Add New Group",
+    "enterGroupName": "Please enter group name",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "addSuccess": "Group added successfully",
+    "addError": "Failed to add group",
+    "deleteSuccess": "Group deleted successfully",
+    "deleteError": "Failed to delete group"
   }
 }

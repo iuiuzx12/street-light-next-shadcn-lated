@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LanguageSwitcher } from "./language-switcher";
-import { LogIn, Eye, EyeOff } from 'lucide-react';
+import { LogIn, Eye, EyeOff, LoaderCircle } from 'lucide-react';
 
 export function LoginForm() {
   const rounter = useRouter();
@@ -52,12 +52,14 @@ export function LoginForm() {
       if(res.status === 200) {
         setError(t('loginSuccess'));
         rounter.push(`/dashboard`);
+        setLoading(false); // Hide loader after navigation
         rounter.refresh();
       } else{
         setLoading(false);
         setError(t('loginFailed'));
       }
-    } catch {
+    } catch (error) {
+      setLoading(false); 
       setError(t('loginError'));
     }
   }
@@ -135,7 +137,11 @@ export function LoginForm() {
             className="w-full h-11 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 focus-visible:ring-sky-500 focus-visible:ring-2 focus-visible:ring-offset-2 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             disabled={isloading}
           >
-            <LogIn className="w-4 h-4 mr-2" />
+            {isloading ? (
+              <LoaderCircle className="w-4 h-4 mr-2 animate-spin" />
+            ) : (
+              <LogIn className="w-4 h-4 mr-2" />
+            )}
             {t('loginButton')}
           </Button>
         </form>

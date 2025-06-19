@@ -3,6 +3,7 @@ export interface ListGroupAll {
     group_name: string;
     sub_district: string;
     total_rtu: string;
+    count_device: number;
 }
 
 export interface ListImsi {
