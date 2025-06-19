@@ -24,7 +24,7 @@ export default function ControlGroupPage() {
       <GroupTable
         // เรียกใช้ฟังก์ชัน columns() และส่ง actions ที่จำเป็นเข้าไป
         columns={columns({
-          onDelete: deleteGrou,
+          onDelete: deleteGroup,
           onCommand: (groupCode, commandType) => {
             return sendCommand(groupCode, groupCode, commandType, '100');
           }
