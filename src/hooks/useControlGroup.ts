@@ -139,8 +139,8 @@ export function useControlGroup() {
         "API-Key": "1234",
       },
       body: JSON.stringify({
-        group_code: dataGroupCode,
         group_name: dataGroupName,
+        group_code: dataGroupCode,
       }),
     });
 

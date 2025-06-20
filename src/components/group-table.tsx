@@ -34,9 +34,24 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
+import { type VariantProps } from "class-variance-authority"
+import { badgeVariants } from "./ui/badge"
+
+type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
+
+
+
+const statusColorMap: Record <string, BadgeVariant> = {
+  active : "success",
+  paused : "destructive",
+  vacation : "warning"
+}
+
+const INITIAL_VISIBLE_COLUMNS = ["group_name", "sub_district", "total_rtu", "actions"];
 
 // Interface สำหรับ Props ที่ Component นี้รับเข้ามา
 interface DataTableProps<TData, TValue> {
+  
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   onAddGroup: (groupName: string) => Promise<boolean>

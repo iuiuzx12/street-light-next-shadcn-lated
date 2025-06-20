@@ -17,7 +17,7 @@ import {
 // สร้าง Type สำหรับ Actions ที่จะรับเข้ามา
 export type ColumnActions = {
   onCommand: (groupCode: string, commandType: 'ON' | 'OFF' | 'DIM') => void
-  onDelete: (groupCode: string, groupName: string) => void
+  onDelete: ( groupName: string , groupCode: string) => void
   // สามารถเพิ่ม Actions อื่นๆ ได้ที่นี่ เช่น onAddDevice
 }
 
@@ -69,7 +69,7 @@ export const columns = (actions: ColumnActions): ColumnDef<ListGroupAll>[] => [
                 className="text-red-600 focus:text-red-600"
                 onClick={() => {
                   if (confirm(`คุณแน่ใจหรือไม่ที่จะลบกลุ่ม "${group.group_name}"?`)) {
-                    actions.onDelete(group.group_code, group.group_name)
+                    actions.onDelete( group.group_name , group.group_code)
                   }
                 }}
               >
