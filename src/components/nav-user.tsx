@@ -1,5 +1,7 @@
 "use client";
 
+import Logout from "@/app/[locale]/logout/page";
+
 import {
   BadgeCheck,
   Bell,
@@ -66,7 +68,6 @@ export function NavUser({
       router.push("/");
       router.refresh();
 
-      console.log("Logging out...");
     } catch (error) {
       setIsLoading(false);
       console.error("Logout failed:", error);
@@ -135,7 +136,8 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
+            <Logout />
+            {/* <DropdownMenuItem
                 className="cursor-pointer"
                 onClick={handleLogout}
                 disabled={isLoading}
@@ -146,7 +148,7 @@ export function NavUser({
                     <LogOut className="w-4 h-4 mr-2" />
                 )}
                 {isLoading ? "Logging out..." : "Log out"}
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

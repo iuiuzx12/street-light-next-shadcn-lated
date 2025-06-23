@@ -49,7 +49,7 @@ export async function POST() {
     }
     
   } catch (error) {
-    console.log("error");
+
     console.log(error);
     return NextResponse.json(
       { error: "Server Error" },

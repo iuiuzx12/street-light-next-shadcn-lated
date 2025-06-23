@@ -33,7 +33,7 @@ export function NavUser({
             router.push("/");
             router.refresh();
 
-            console.log("Logging out...");
+            
         } catch (error) {
             setIsLoading(false);
             console.error("Logout failed:", error);

@@ -48,7 +48,7 @@ export default async function middleware(
       publicPages = ["/", "login","/logout", "/not-auth"];
       const DataUser: ListAuth = await responseUser.json().finally();
 
-      console.log("DataUser", DataUser);
+      
 
       if (DataUser.dashboard[0] === 1) publicPages.push("/dashboard");
       if(DataUser.groupConfig[0] === 1) publicPages.push("/control-group");

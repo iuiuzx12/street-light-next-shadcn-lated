@@ -24,7 +24,6 @@ export function useControlGroup() {
       const res = await response.json();
       const data: ListGroupAll[] = res.data;
       setGroups(data);
-      setLoading(false);
 
       return data;
     } catch (error) {
@@ -47,6 +46,7 @@ export function useControlGroup() {
         throw new Error('Network response was not ok');
       }
       const res = await response.json();
+      
       return res.data;
       
     } catch (error) {
@@ -130,7 +130,7 @@ export function useControlGroup() {
     }
   };
 
-  const deleteGroup = async (dataGroupName: string, dataGroupCode : string) => {
+  const deleteGroup =  useCallback(async (dataGroupName: string, dataGroupCode : string) => {
        
     const res = await fetch("/api/group/delete-group-name", {
       method: "POST",
@@ -150,11 +150,11 @@ export function useControlGroup() {
 
     const result = await res.json();
     if (res.status == 200) {
-       fetchGroupAll();
+      await fetchGroupAll();
     } else {
       
     }
-  };
+  }, [fetchGroupAll]);
 
 
 
@@ -343,9 +343,9 @@ export function useControlGroup() {
   };
 
   useEffect(() => {
-    fetchRule(); // ควรย้าย logic ของ fetchRule มาในนี้ด้วย
+    fetchRule(); // 
     fetchGroupAll();
-    imsiData(); // ควรย้าย logic ของ fetchImsiAll มาในนี้ด้วย
+    imsiData(); 
   }, [fetchGroupAll]);
 
   return{

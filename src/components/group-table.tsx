@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -11,8 +11,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { PlusCircle } from "lucide-react"
+} from "@tanstack/react-table";
+import { PlusCircle, Users, X } from "lucide-react";
 
 import {
   Table,
@@ -21,37 +21,64 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+
 import {
   Dialog,
+  DialogTrigger,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
-import { type VariantProps } from "class-variance-authority"
-import { badgeVariants } from "./ui/badge"
+  DialogDescription,
+  DialogFooter,
+  DialogProps
+} from "@/components/ui/customDialog";
+import {Label, Input} from '@/components/ui/formDialog';
+
+
+
+import { type VariantProps } from "class-variance-authority";
+import { badgeVariants } from "./ui/badge";
 
 type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
 
 
 
-const statusColorMap: Record <string, BadgeVariant> = {
+
+interface GroupDialogProps {
+  onGroupCreate?: (groupName: string) => void;
+  onGroupCreateAsync?: (groupName: string) => Promise<void>;
+  className?: string;
+  buttonText?: string;
+  maxLength?: number;
+  validation?: {
+  required?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  pattern?: RegExp;
+  customValidator?: (value: string) => string | null;
+  };
+}
+
+type ValidationResult = {
+  isValid: boolean;
+  error?: string;
+};
+
+const statuCsolorMap: Record <string, BadgeVariant> = {
   active : "success",
   paused : "destructive",
   vacation : "warning"
 }
 
+
+
+
 const INITIAL_VISIBLE_COLUMNS = ["group_name", "sub_district", "total_rtu", "actions"];
 
 // Interface สำหรับ Props ที่ Component นี้รับเข้ามา
 interface DataTableProps<TData, TValue> {
-  
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   onAddGroup: (groupName: string) => Promise<boolean>
