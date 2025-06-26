@@ -1,0 +1,69 @@
+{
+  "LoginPage": {
+    "upForm": "ลงชื่อเข้าใช้ระบบ",
+    "title": "เข้าสู่ระบบ",
+    "usernameLabel": "ชื่อผู้ใช้",
+    "passwordLabel": "รหัสผ่าน",
+    "loginButton": "เข้าสู่ระบบ",
+    "inputPlaceholderUsername":"ใส่ชื่อผู้ใช้",
+    "inputPlaceholderPassword": "ใส่รหัสผ่าน",
+    "loginSuccess": "เข้าสู่ระบบสำเร็จ",
+    "loginFailed": "เข้าสู่ระบบล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "LoginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ"
+  },
+  "LanguageSwitcher": {
+    "label": "เปลี่ยนภาษา",
+    "en": "อังกฤษ",
+    "th": "ไทย"
+  },
+  "NotAuth": {
+    "not-auth-title": "ไม่ได้รับอนุญาต",
+    "not-auth-description": "คุณไม่ได้รับอนุญาตให้เข้าถึงหน้านี้",
+    "not-auth-close": "ปิด"
+  },
+  "ControlGroup": {
+    "pageTitle": "จัดการกลุ่มควบคุม",
+    "addGroup": "เพิ่มกลุ่ม",
+    "deleteGroup": "ลบกลุ่ม",
+    "confirmDelete": "คุณแน่ใจหรือไม่ที่จะลบกลุ่มนี้?",
+    "groupName": "ชื่อกลุ่ม",
+    "actions": "การดำเนินการ",
+    "addNewGroup": "เพิ่มกลุ่มใหม่",
+    "enterGroupName": "กรุณาใส่ชื่อกลุ่ม",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "addSuccess": "เพิ่มกลุ่มสำเร็จ",
+    "addError": "เกิดข้อผิดพลาดในการเพิ่มกลุ่ม",
+    "deleteSuccess": "ลบกลุ่มสำเร็จ",
+    "deleteError": "เกิดข้อผิดพลาดในการลบกลุ่ม"
+  },
+  "MapTotal" : {
+    "title": "แผนที่",
+    "description": "",
+    "group": "กลุ่ม",
+    "imsi" : "เลขหลอด",
+    "last-update" : "เวลาการทำงานล่าสุด",
+    "last-command" : "คำสั่งล่าสุด",
+    "last-status" : "สถานะล่าสุด",
+    "gov" : "เลขครุภัณฑ์",
+    "streetlight-name" : "รหัสเสา",
+    "auto-mode" : "โหมดอัตโนมัติ",
+    "btn-open" : "คำสั่ง เปิด",
+    "btn-wait-open" : "รอ เปิด",
+    "btn-close" : "คำสั่ง ปิด",
+    "btn-wait-close" : "รอ ปิด",
+    "btn-read" : "อ่านค่า",
+    "btn-wait-read" : "รอ อ่านค่า",
+    "btn-search" : "ค้นหา",
+    "btn-open-sensor" : "เปิดใช้งาน",
+    "btn-close-sensor" : "ปิดใช้งาน",
+    "select-type" : "เลือกข้อมูล",
+    "select-group" : "แบบกลุ่ม",
+    "select-imsi" : "รายโคม",
+    "select-street-name" : "เลขเสา",
+    "select-status": "เลือกสถานะ",
+    "select-all": "ทั้งหมด",
+    "select-broken": "โคมเสีย",
+    "select-disconnection": "ขาดการเชื่อมต่อ"
+  }
+}
