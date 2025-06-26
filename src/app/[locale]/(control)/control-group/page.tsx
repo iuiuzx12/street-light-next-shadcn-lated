@@ -18,11 +18,18 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function ControlGroupPage() {
   // Logic เดิมจาก useControlGroup hook
   const { 
+    dataRule,
     loading,
     groups,
     addGroup,
+    pushImsi,
     deleteGroup,
+    deleteImsiInGroup,
     sendCommand,
+    dataLatLong,
+    imsiData,
+    configDevice,
+    dataGroupDetail
   } = useControlGroup();
 
   // สร้าง columns definition - ส่วนนี้ยังคงเหมือนเดิมทุกประการ
