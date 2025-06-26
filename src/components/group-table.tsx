@@ -44,7 +44,7 @@ import { badgeVariants } from "./ui/badge";
 type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
 
 
-
+  
 
 interface GroupDialogProps {
   onGroupCreate?: (groupName: string) => void;

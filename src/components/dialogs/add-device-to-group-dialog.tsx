@@ -100,8 +100,8 @@ export const AddDeviceToGroupDialog: React.FC<AddDeviceToGroupDialogProps> = ({
                 </SelectTrigger>
                 <SelectContent>
                   {imsiList.map((item) => (
-                    <SelectItem key={item.imsi} value={item.imsi}>
-                      {item.imsi}{item.device_name ? ` (${item.device_name})` : ''}
+                    <SelectItem key={item.key} value={item.value}>
+                      {item.key}{item.value ? ` (${item.value})` : ''}
                     </SelectItem>
                   ))}
                 </SelectContent>
