@@ -4,6 +4,8 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import {routing} from '@/i18n/routing';
 import "../globals.css" // ตรวจสอบ path ของ globals.css ให้ถูกต้อง
 import { notFound } from "next/navigation";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner" // <== เพิ่ม import นี้
+
 
 
 
@@ -32,6 +34,8 @@ export default async function LocaleLayout({
       <body className={inter.className}>
         <NextIntlClientProvider>
           {children}
+
+          <SonnerToaster />
         </NextIntlClientProvider>
       </body>
     </html>

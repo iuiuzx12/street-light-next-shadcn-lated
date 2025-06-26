@@ -16,35 +16,40 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ControlGroupPage() {
-  // Logic เดิมจาก useControlGroup hook
-  const { 
+  const hookValues = useControlGroup();
+  const {
     dataRule,
     loading,
     groups,
     addGroup,
-    pushImsi,
-    deleteGroup,
-    deleteImsiInGroup,
-    sendCommand,
-    dataLatLong,
-    imsiData,
-    configDevice,
-    dataGroupDetail
-  } = useControlGroup();
+    // --- Functions to be passed to columns ---
+    // deleteGroup, // Now part of columnActions
+    // sendCommand, // Now part of columnActions
+    // pushImsi,
+    // deleteImsiInGroup,
+    // configDevice,
+    // imsiData,
+    // dataGroupDetail,
+  } = hookValues;
 
-  // สร้าง columns definition - ส่วนนี้ยังคงเหมือนเดิมทุกประการ
-  // เพื่อให้ทำงานร่วมกับ group-table-columns.tsx ได้
-  const tableColumns = React.useMemo(
-    () => createColumns({
-      onDelete: deleteGroup,
-      onCommand: (groupCode, commandType) => {
-        // จากโค้ดเดิมของคุณ มีการส่งค่าคงที่ `groupCode` ไป 2 ครั้ง
-        // และ '100' ซึ่งผมคงไว้ตามเดิม
-        return sendCommand(groupCode, groupCode, commandType, '100');
-      }
-    }),
-    [deleteGroup, sendCommand]
-  );
+  const tableColumns = React.useMemo(() => {
+    // สร้าง object `columnActions` ที่จะส่งให้ createColumns
+    // โดย map functions จาก hook useControlGroup
+    const columnActions = {
+      // commandType จะถูกกำหนดโดย Dialog, dimPercent ก็เช่นกัน
+      onSendCommand: (groupCode: string, commandType: 'ON' | 'OFF' | 'DIM', dimPercent: string) => {
+        return hookValues.sendCommand("group", groupCode, commandType, dimPercent);
+      },
+      onDeleteGroup: hookValues.deleteGroup,
+      onPushImsi: hookValues.pushImsi,
+      onDeleteImsiInGroup: hookValues.deleteImsiInGroup,
+      onConfigDevice: hookValues.configDevice,
+      fetchImsiList: hookValues.imsiData, // Function to get list of all IMSIs
+      fetchGroupDetails: hookValues.dataGroupDetail, // Function to get devices in a group
+    };
+
+    return createColumns(columnActions, dataRule || {}); // ส่ง dataRule ไปด้วย, ถ้ายังไม่มีให้เป็น object ว่าง
+  }, [hookValues, dataRule]);
 
   // สร้าง Loading Skeleton UI ที่สวยงามขึ้น
   // ออกแบบให้มีเค้าโครงเหมือนหน้าจริงมากที่สุด
