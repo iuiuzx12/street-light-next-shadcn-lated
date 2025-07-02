@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 export default function NotAuth() {
   const t = useTranslations("NotAuth");
   const router = useRouter()
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
