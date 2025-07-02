@@ -58,7 +58,7 @@ export function LoginForm() {
         setLoading(false);
         setError(t('loginFailed'));
       }
-    } catch (error) {
+    } catch {
       setLoading(false); 
       setError(t('loginError'));
     }

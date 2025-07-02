@@ -35,12 +35,12 @@ export async function POST(req: Request) {
     });
 
     const dataResponse  = await response.json();
-    if(dataResponse.reult === false){
+    if(dataResponse.result === false){
         return NextResponse.json("401", {
             status: 401,
         });
     }else{
-        const oneDay = 24 * 60 * 60;
+        const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
         const cookieStore = await cookies();
         cookieStore.set('token', dataResponse.dataReturn, { expires: Date.now() + oneDay });
         return NextResponse.json("200", {

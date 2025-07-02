@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       });
     }else{
 
-      const transformedArray = dataResponse.dataReturn.map((num : any, index : any) => ({
+      const transformedArray = dataResponse.dataReturn.map((index : string,num : string) => ({
         key: index,
         value: num
       }));
