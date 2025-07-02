@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import type {ListImsi} from "@/interface/control";
 export async function GET() {
   try {
     return NextResponse.json(
@@ -43,7 +44,17 @@ export async function POST(req: Request) {
         status: 401,
       });
     } else {
-      const transformedArray = dataResponse.dataReturn.map((item: any) => ({
+      
+      interface ApiGroupItem {
+        groupCode: string;
+        groupName: string;
+        // Add other properties from the API response here if they exist.
+      }
+
+      
+
+      // 3. Apply the types to the map function and the resulting array.
+      const transformedArray: ListImsi[] = dataResponse.dataReturn.map((item: ApiGroupItem) => ({
         key: item.groupCode,
         value: item.groupName,
       }));
